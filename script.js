@@ -37,8 +37,20 @@ let School = {
         SortStudentByName: function(){},
 
         // michael
-        getSchoolAccount: function(){},
-        getSchoolInfo: function(){},
+       
+        // This method gets school accounts by adding all the school fees, and all staff salaries separately. then subtracting both from each other.
+        getSchoolAccount: function(){
+              for (let i = 0; i < School.student.length; i++){
+                  studentsFeesRevenue += parseInt(School.student[i].schoolfee)    
+                  staffSalaryCost += parseInt(School.staff[i].salary)
+                  schoolAccount = studentsFeesRevenue - staffSalaryCost
+               }   return schoolAccount
+          },
+
+        // this method gets all necessaryinformation about the school
+       getSchoolInfo: function(){
+              return {"name": this.name, "address": this.address, "students": this.getAllStudents(), "staff": this.getAllStaff(), "account": this.getSchoolAccount()}
+       },
     
  };      
     
